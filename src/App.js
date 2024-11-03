@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Home from "./view/Home";
+import Header from "./components/Header";
+import About from "./view/About";
+import Gallery from "./view/Gallery";
+import Portfolio from "./view/portfolio";
+import { AnimatePresence } from "framer-motion";
+import Dashboard from "./dashboard/Dashbaord";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AnimatePresence mode="wait">
+      <Routes>
+        <Route path="*" element={<div>404 not found</div>} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+            </>
+          }
+        />
+        <Route
+          path="/Portfolio"
+          element={
+            <>
+              <Portfolio />
+            </>
+          }
+        />
+        <Route
+          path="/Gallery"
+          element={
+            <>
+              <Gallery />
+            </>
+          }
+        />
+        <Route
+          path="/About"
+          element={
+            <>
+              <About />
+            </>
+          }
+        />
+        <Route path="dashboardForMohoamed" element={<Dashboard />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
